@@ -1,7 +1,7 @@
 #include <time.h>
 #include <iostream>
 #include <vector>
-#include "array"
+#include <array>
 using namespace std ;
 
 class Solution {
@@ -13,7 +13,7 @@ public:
                 nums[i++] = n;
         return i;
     }
-    
+
     int remmoveDuplicates_twoPointor(vector<int> &nums)
     {
         if(nums.size() == 0)
@@ -34,7 +34,7 @@ public:
                 j++ ;
             }
         }
-        
+
         return i +1 ;
     }
 };
