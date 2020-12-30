@@ -23,18 +23,47 @@ public:
             } while (start != current); 
         }
     }
+
+    void rotate_reverse(vector<int>& nums, int k)
+    {
+        k = k % nums.size() ;
+        reverse(nums,0, nums.size() -1); 
+        reverse(nums,0, k-1); 
+        reverse(nums,k, nums.size() - 1); 
+    }
+
+    void reverse(vector<int>&nums, int start, int end)
+    {
+        while(start < end)
+        {
+            int tmp ;
+            tmp = nums[start] ;
+            nums[start] = nums[end] ;
+            nums[end] = tmp ;
+            start ++ ;
+            end -- ;
+        }
+    }
+
 };
 
 
 int main(int argc, const char * argv[]) {
     clock_t tStart = clock();
 
-    vector<int> number ;
+    vector<int> number, number2 ;
     number = {1,2,3} ;
     Solution *s = new Solution ;
     s->rotate(number, 2) ;
     for(int n: number)
         cout << n ; 
+    cout << endl ;
+
+    number2 = {1,2,3,4,5} ;
+    s->rotate_reverse(number2 , 7) ;
+    for(int n2: number2)
+        cout << n2 ;
+    cout << endl ;
     
 
 
