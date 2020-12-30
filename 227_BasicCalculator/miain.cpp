@@ -5,15 +5,22 @@ using namespace std ;
 
 class Solution {
 public:
+    // cyclic replacements 
     void rotate(vector<int>& nums, int k) {
-        if(k == nums.size())
-            return ;
-        int tmp, nextindex ; 
-        for(int i = 0; i < nums.size(); i++)
+        k = k % nums.size() ;
+        int count = 0 ;
+        for(int start = 0; count < nums.size(); start++)
         {
-            nextindex = (i + k) % nums.size() ;
-            tmp = nums[nextindex] ;
-            nums[nextindex] = nums[i] ;
+            int current = start ;
+            int prev = nums[start] ;
+            do{
+                int next = (current + k ) % nums.size() ;
+                int temp = nums[next] ;
+                nums[next] = prev ;
+                prev = temp ;
+                current = next ; 
+                count ++ ;
+            } while (start != current); 
         }
     }
 };
@@ -23,9 +30,9 @@ int main(int argc, const char * argv[]) {
     clock_t tStart = clock();
 
     vector<int> number ;
-    number = {1,2,3,4,5,6} ;
+    number = {1,2,3} ;
     Solution *s = new Solution ;
-    s->rotate(number, 1) ;
+    s->rotate(number, 2) ;
     for(int n: number)
         cout << n ; 
     
