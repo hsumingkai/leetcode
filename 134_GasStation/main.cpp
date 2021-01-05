@@ -37,8 +37,6 @@ public:
             }
             if(tmpstart >= 0 && gastank >= 0) 
                 start = tmpstart ;
-
-
         }
 
         if(start == -1)
@@ -50,11 +48,27 @@ public:
             return start ;
         }
     }
+
+    int canCompleteCircuit_SumCompare(vector<int> &gas, vector<int> &cost) 
+    {
+        int start(0),total(0),tank(0);
+        //if car fails at 'start', record the next station
+        for(int i=0;i<gas.size();i++)
+        {
+            if((tank=tank+gas[i]-cost[i])<0) 
+            {
+                start=i+1;
+                total+=tank;
+                tank=0;
+            }
+        }
+
+        return (total+tank<0)? -1:start;
+    }
 };
 
 int main(int argc, const char * argv[])
 {
-    clock_t tStart = clock();
     Solution *s = new Solution ;
     vector<int> gas, cost ;
     vector<int> gas2, cost2 ;
@@ -62,12 +76,24 @@ int main(int argc, const char * argv[])
 
     gas = {1,2,3,4,5} ;
     cost = {3,4,5,1,2} ;
+    clock_t tStart = clock();
     rs = s->canCompleteCircuit(gas, cost) ;
 
     if(rs == -1)
         cout << "there is not solution" << endl ;
     else
         cout << "the start index is " << rs << endl ;
+    printf("Time taken: %.8fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
+
+    rs = s->canCompleteCircuit_SumCompare(gas, cost) ;
+
+    clock_t tStart2 = clock();
+    if(rs == -1)
+        cout << "there is not solution" << endl ;
+    else
+        cout << "the start index is " << rs << endl ;
+
+    printf("Time taken: %.8fs\n", (double)(clock() - tStart2)/CLOCKS_PER_SEC);
         
 
     gas2 = {3,1,1} ;
@@ -82,7 +108,6 @@ int main(int argc, const char * argv[])
     
 
 
-    printf("Time taken: %.8fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
     return 0 ;
     
 }
