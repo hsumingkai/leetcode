@@ -44,23 +44,42 @@ public:
         }
         return row ;
     }
+
+    vector<int> getRow_UpdateFromEnd(int rowIndex) {
+        vector<int> A(rowIndex+1, 0);
+        A[0] = 1;
+        for(int i=1; i<rowIndex+1; i++)
+            for(int j=i; j>=1; j--)
+                A[j] += A[j-1];
+        return A;
+    }
 };
 
 int main(int argc, const char * argv[])
 {
     Solution *s = new Solution ;
-    clock_t tStart = clock();
 
-    int rowindex = 3 ;
+    clock_t tStart = clock();
+    int rowindex = 30 ;
     vector<int> vec = s->getRow(rowindex) ;
     for (int i = 0; i < vec.size(); i++)
     {
-        cout << vec[i];
+        cout << vec[i] << " ";
     }
     cout << endl ;
 
-    
     printf("Time taken: %.8fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
+
+    clock_t tStart2 = clock();
+    vector<int> vec2 = s->getRow_UpdateFromEnd(rowindex) ;
+    for (int i = 0; i < vec2.size(); i++)
+    {
+        cout << vec2[i] << " ";
+    }
+    cout << endl ;
+    printf("Time taken: %.8fs\n", (double)(clock() - tStart2)/CLOCKS_PER_SEC);
+
+    
 
     return 0 ;
     
