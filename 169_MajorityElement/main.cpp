@@ -65,6 +65,21 @@ public:
         return -1;
     }
 
+    int majorityElement_BitVoting(vector<int>& nums) {
+        const int n = nums.size();
+        int majority = 0;
+        for (int i = 0; i < 32; ++i) {
+            int mask = 1 << i;
+            int count = 0;
+            for (const int num : nums)
+                if ((num & mask) && (++count > n /2)) {
+                    majority |= mask;
+                    break;
+                }
+        }
+        return majority;
+    }
+
 };
 int main(int argc, const char * argv[])
 {
@@ -90,6 +105,11 @@ int main(int argc, const char * argv[])
     int rs4 = s->majorityElement_BST(nums) ;
     cout << "the majority number : " << rs4 << endl;
     printf("Time taken: %.8fs\n", (double)(clock() - tStart4)/CLOCKS_PER_SEC);
+    
+    clock_t tStart5 = clock();
+    int rs5 = s->majorityElement_BitVoting(nums) ;
+    cout << "the majority number : " << rs5 << endl;
+    printf("Time taken: %.8fs\n", (double)(clock() - tStart5)/CLOCKS_PER_SEC);
     
 
 
