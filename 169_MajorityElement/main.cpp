@@ -43,7 +43,6 @@ public:
     // time O(n), space O(n)
     int majorityElement_Random(vector<int>& nums) 
     {
-        bool flag = 1;
         int n = nums.size();
         while(1){
             int x = rand()%n;
