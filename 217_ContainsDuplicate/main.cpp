@@ -37,7 +37,6 @@ int main(int argc, const char * argv[])
         cout << "the array contains duplicate element. "   << endl ;
     else
         cout << "the array contains distinct. "   << endl ;
-cout << 123<< endl; 
 
     printf("Time taken: %.8fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
 
