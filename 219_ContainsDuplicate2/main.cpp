@@ -3,6 +3,7 @@
 #include <time.h>
 #include <set>
 #include <unordered_set>
+#include <unordered_map>
 
 using namespace std ;
 class Solution {
@@ -17,6 +18,7 @@ public:
         for (int i = 0; i < nums.size(); i++)
         {
             if (i > k) s.erase(nums[i - k - 1]);
+            // check whether nums[i] is found in unordered_set
             if (s.find(nums[i]) != s.end()) 
             {
                 return true;
@@ -27,6 +29,15 @@ public:
        
         return false;
     }
+    bool containsNearbyDuplicate_unorderedmap(vector<int>& nums, int k) {
+        unordered_map<int, int> hashMap;
+        for(int i = 0; i < nums.size(); ++i) {
+            if(hashMap.find(nums[i]) != hashMap.end() && i - hashMap[nums[i]] <= k)  return true;
+            hashMap[nums[i]] = i;
+        }
+        return false;
+    }
+
 
 
 };
