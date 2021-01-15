@@ -25,7 +25,7 @@ public:
         return false;
     }
 
-    // https://leetcode.com/problems/contains-duplicate-iii/discuss/824578/C%2B%2B-O(N)-time-complexity-or-Explained-or-Buckets-or-O(K)-space-complexity
+    // ref: https://leetcode.com/problems/contains-duplicate-iii/discuss/824578/C%2B%2B-O(N)-time-complexity-or-Explained-or-Buckets-or-O(K)-space-complexity
     bool containsNearbyAlmostDuplicate_bucket_slidewinodw(vector<int>& nums, int k, int t) {
         int n = nums.size();
         
