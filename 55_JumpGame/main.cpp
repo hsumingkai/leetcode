@@ -23,13 +23,27 @@ public:
 
         return true ;
     }
+
+    bool canJump_Greedy(vector<int>& nums)
+    {
+        int lastPos = nums.size() -1 ;
+        for(int i = nums.size()-1; i>=0 ; i--)
+        {
+            if(i+nums[i] >= lastPos)
+            {
+                lastPos = i ;
+            }
+        }
+        return lastPos == 0 ;
+
+    }
 };
 
 int main(int argc, const char * argv[])
 {
     Solution *s = new Solution ;
-    vector<int> nums = {3,2,1,0,4} ;
-    bool rs = s->canJump(nums)  ;
+    vector<int> nums = {1,0,2,3,4} ;
+    bool rs = s->canJump_Greedy(nums)  ;
     if(rs)
     {
         cout << "can jump to end" ;
