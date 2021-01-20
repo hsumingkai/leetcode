@@ -11,7 +11,7 @@ using namespace std ;
 
 class Solution {
 public:
-    bool canJump(vector<int>& nums){
+    bool canJump_Greedy(vector<int>& nums){
         int maxstep = 0;
         for (int i = 0; i < nums.size() ; ++i)
         {
@@ -24,7 +24,7 @@ public:
         return true ;
     }
 
-    bool canJump_Greedy(vector<int>& nums)
+    bool canJump_Greedy2(vector<int>& nums)
     {
         int lastPos = nums.size() -1 ;
         for(int i = nums.size()-1; i>=0 ; i--)
