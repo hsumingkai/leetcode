@@ -50,7 +50,7 @@ int main(int argc, const char * argv[])
     vector<int> nums = {1,0,2,3,4} ;
     // vector<int> nums = {2,3,1,1,4} ;
     // vector<int> nums = {2,3,0,1,4} ;
-    int rs = s->canJump_Greedy(nums)  ;
+    int rs = s->jump_BFS(nums)  ;
     
     cout << "the minimum jump number is " << rs ;
     
