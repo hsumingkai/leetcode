@@ -26,8 +26,8 @@ public:
         }
         return profit ;
     }
-    // time: O(n), space: O(1)
     // ref: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/solution/
+    // time: O(n), space: O(1)
     int maxProfit(vector<int>& prices) {
         int minprice = INT_MAX;
         int maxprofit = 0;
@@ -40,6 +40,7 @@ public:
         return maxprofit;
     }
     // ref: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/discuss/39038/Kadane's-Algorithm-Since-no-one-has-mentioned-about-this-so-far-%3A)-(In-case-if-interviewer-twists-the-input)
+    // time: O(n), space: O(1)
     int maxProfit_Kadane(vector<int>& prices) {
         int maxCur = 0, maxSoFar = 0;
         for(int i = 1; i < prices.size(); i++) {
