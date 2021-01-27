@@ -44,7 +44,7 @@ int main(int argc, const char * argv[])
     vector<int> nums = {1,2,3,4,5} ;
     // vector<int> nums = {7,1,5,3,6,4} ;
     // vector<int> nums = {0,1} ;
-    int rs = s->maxProfit(nums) ;
+    int rs = s->maxProfit_twopointer(nums) ;
 
     cout << "the max profit is " << rs << endl; 
 
