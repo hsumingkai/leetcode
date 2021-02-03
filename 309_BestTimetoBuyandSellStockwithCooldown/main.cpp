@@ -29,6 +29,21 @@ public:
 		}
 		return max(s0[prices.size() - 1], s2[prices.size() - 1]);
 	}
+
+    // http://zxi.mytechroad.com/blog/dynamic-programming/leetcode-309-best-time-to-buy-and-sell-stock-with-cooldown/
+    int maxProfit_dp2(vector<int>& prices) {
+        int sold = 0;
+        int rest = 0;
+        int hold = INT_MIN;
+        for (const int price : prices) {
+            int prev_sold = sold;
+            sold = hold + price;
+            hold = max(hold, rest - price);
+            rest = max(rest, prev_sold);
+        }
+        return max(rest, sold);
+    }
+
 };
 
 int main(int argc, const char * argv[])
@@ -40,7 +55,7 @@ int main(int argc, const char * argv[])
     // vector<int> nums = {2,1,3,0, 0,2} ;
     vector<int> nums = {1,50,100,1,1,100} ;
 
-    int rs = s->maxProfit_dp(nums) ;
+    int rs = s->maxProfit_dp2(nums) ;
 
     cout << "the max profit is " << rs << endl; 
 
