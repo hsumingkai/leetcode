@@ -49,7 +49,6 @@ public:
         }
         return maxSoFar;
     }
-
 };
 
 int main(int argc, const char * argv[])
