@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <iostream>
 using namespace std ;
-
+// https://leetcode.com/problems/min-stack/
 class MinStack {
 private:
     stack<int> s ;
