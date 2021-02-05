@@ -1,14 +1,24 @@
+#include <stack> 
+#include <algorithm>
+#include <iostream>
+
 // https://leetcode.com/problems/implement-queue-using-stacks/
 class MyQueue {
 public:
-    /** Initialize your data structure here. */
-    MyQueue() {
-        
-    }
-    
     /** Push element x to the back of queue. */
-    void push(int x) {
-        
+    void push(int x) 
+    {
+        while(!helper.empty())
+        {
+            nums.push(helper.pop()) ;
+        }
+
+        helper.push(x) ;
+
+        while(!nums.empty())
+        {
+            helper.push(nums.pop()) ;
+        }
     }
     
     /** Removes the element from in front of queue and returns that element. */
@@ -25,6 +35,9 @@ public:
     bool empty() {
         
     }
+private:
+    std::stack<int> helper ;
+    std::stack<int> nums ;
 };
 
 /**
@@ -35,3 +48,9 @@ public:
  * int param_3 = obj->peek();
  * bool param_4 = obj->empty();
  */
+int main(int argc, const char * argv[])
+{
+    MyQueue* obj = new MyQueue();
+    
+
+}
