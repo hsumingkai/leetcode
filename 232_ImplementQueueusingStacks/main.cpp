@@ -1,43 +1,48 @@
-#include <stack> 
 #include <algorithm>
 #include <iostream>
+#include <stack> 
+using namespace std ; 
 
 // https://leetcode.com/problems/implement-queue-using-stacks/
 class MyQueue {
+private:
+    stack<int> helper ;
+    stack<int> nums ;
 public:
     /** Push element x to the back of queue. */
     void push(int x) 
     {
-        while(!helper.empty())
+        while(!nums.empty())
         {
-            nums.push(helper.pop()) ;
+            helper.push(nums.top()) ;
+            nums.pop() ;
         }
 
         helper.push(x) ;
 
-        while(!nums.empty())
+        while(!helper.empty())
         {
-            helper.push(nums.pop()) ;
+            nums.push(helper.top()) ;
+            helper.pop() ;
         }
     }
     
     /** Removes the element from in front of queue and returns that element. */
     int pop() {
-        
+        int num = nums.top() ;
+        nums.pop() ;
+        return num ;
     }
     
     /** Get the front element. */
     int peek() {
-        
+        return nums.top() ; 
     }
     
     /** Returns whether the queue is empty. */
     bool empty() {
-        
+        return nums.empty() ;
     }
-private:
-    std::stack<int> helper ;
-    std::stack<int> nums ;
 };
 
 /**
@@ -51,6 +56,19 @@ private:
 int main(int argc, const char * argv[])
 {
     MyQueue* obj = new MyQueue();
-    
+    obj->push(1) ;
+    obj->push(12) ;
+    int param_2 = obj->pop();
+    int param_3 = obj->peek();
+    bool param_4 = obj->empty();
+
+    cout << "the param 2 is " << param_2 ;
+    cout << "the param 3 is " << param_3 ;
+    if(param_4)
+    {
+        cout << "the queue is empty " << param_4 ;
+    }
+
+
 
 }
