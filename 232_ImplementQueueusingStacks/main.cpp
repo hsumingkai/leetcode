@@ -68,7 +68,4 @@ int main(int argc, const char * argv[])
     {
         cout << "the queue is empty " << param_4 ;
     }
-
-
-
 }
