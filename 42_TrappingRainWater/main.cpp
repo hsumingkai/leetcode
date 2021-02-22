@@ -31,6 +31,25 @@ public:
         return ans;
     }
 
+    int trap_stack(vector<int>& height)
+    {
+        int ans = 0, current = 0;
+        stack<int> st;
+        while (current < height.size()) {
+            while (!st.empty() && height[current] > height[st.top()]) {
+                int top = st.top();
+                st.pop();
+                if (st.empty())
+                    break;
+                int distance = current - st.top() - 1;
+                int bounded_height = min(height[current], height[st.top()]) - height[top];
+                ans += distance * bounded_height;
+            }
+            st.push(current++);
+        }
+        return ans;
+    }
+
 };
 
 int main(int argc, const char * argv[])
@@ -39,7 +58,7 @@ int main(int argc, const char * argv[])
 
     Solution *s = new Solution ;
     vector<int> nums = {0,1,0,2,1,0,1,3,2,1,2,1} ;
-    int rs = s->trap_dp(nums) ;
+    int rs = s->trap_stack(nums) ;
 
     cout << "the rs is " << rs << endl ;
     printf("Time taken: %.8fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
